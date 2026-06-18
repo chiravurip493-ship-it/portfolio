@@ -13,6 +13,7 @@ import projectBasicCafe from "@/assets/project-basic-cafe.jpg";
 import projectPortfolioLeftTop from "@/assets/cp.png";
 import projectPortfolioLeftBottom from "@/assets/prot.png";
 import projectDental from "@/assets/project-dental.png";
+import projectTargo from "@/assets/project-targo.png";
 
 interface SubProject {
   name: string;
@@ -85,9 +86,9 @@ const PROJECTS: Project[] = [
         link: "https://github.com/balapranav3010",
       },
       {
-        name: "TechGadgets Shop",
-        image: projectNike,
-        link: "https://github.com/balapranav3010",
+        name: "Targo — Luxury Car Dealership",
+        image: projectTargo,
+        link: "https://targo-automobiles.vercel.app",
       },
     ],
   },
