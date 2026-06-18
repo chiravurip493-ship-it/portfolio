@@ -12,6 +12,7 @@ import projectBasic from "@/assets/project-basic.png";
 import projectBasicCafe from "@/assets/project-basic-cafe.jpg";
 import projectPortfolioLeftTop from "@/assets/cp.png";
 import projectPortfolioLeftBottom from "@/assets/prot.png";
+import projectDental from "@/assets/project-dental.png";
 
 interface SubProject {
   name: string;
@@ -35,12 +36,12 @@ const PROJECTS: Project[] = [
     n: "01",
     category: "Custom Web",
     name: "Business Websites",
-    image: projectBusiness,
+    image: projectDental,
     subProjects: [
       {
-        name: "Sleek Marketing Agency",
-        image: projectBusiness,
-        link: "https://github.com/balapranav3010",
+        name: "BrightSmile Dental Clinic",
+        image: projectDental,
+        link: "https://dental-hub-craft.vercel.app/",
       },
       {
         name: "Corporate Enterprise Portal",
