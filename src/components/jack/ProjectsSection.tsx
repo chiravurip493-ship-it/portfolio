@@ -16,6 +16,7 @@ import projectDental from "@/assets/project-dental.png";
 import projectTargo from "@/assets/project-targo.png";
 import projectGym from "@/assets/project-gym.png";
 import projectCoffeeDay from "@/assets/project-coffee-day.png";
+import projectHuracan from "@/assets/project-huracan.png";
 
 interface SubProject {
   name: string;
@@ -60,8 +61,8 @@ const PROJECTS: Project[] = [
     image: projectLambo,
     subProjects: [
       {
-        name: "Velocity Motors (Lamborghini)",
-        image: projectLambo,
+        name: "Lamborghini-Huracan Website",
+        image: projectHuracan,
         link: "https://blue-lamborghini-huracan.vercel.app/",
       },
       {
