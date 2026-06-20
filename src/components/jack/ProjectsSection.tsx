@@ -19,6 +19,8 @@ import projectCoffeeDay from "@/assets/project-coffee-day.png";
 import projectHuracan from "@/assets/project-huracan.png";
 import projectDrinkNew from "@/assets/project-drink-new.png";
 import projectTargoLogistics from "@/assets/project-targo-logistics.png";
+import projectArdenPortfolio from "@/assets/project-arden-portfolio.jpg";
+
 
 
 interface SubProject {
@@ -104,6 +106,11 @@ const PROJECTS: Project[] = [
     name: "Portfolio Websites",
     image: projectPortfolio,
     subProjects: [
+      {
+        name: "Arden Vale Portfolio",
+        image: projectArdenPortfolio,
+        link: "https://github.com/pranav-3010",
+      },
       {
         name: "Mariana Creative Portfolio",
         image: projectPortfolio,
