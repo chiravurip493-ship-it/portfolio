@@ -23,6 +23,7 @@ import projectTargoLogistics from "@/assets/project-targo-logistics.png";
 import projectArdenPortfolio from "@/assets/project-arden-portfolio.jpg";
 import projectDemoFrontendPortfolio from "@/assets/project-demo-frontend-portfolio.png";
 import projectGame from "@/assets/game.png";
+import projectSrinivasInteriors from "@/assets/project-srinivas-interiors.png";
 
 
 
@@ -142,6 +143,11 @@ const PROJECTS: Project[] = [
         name: "Coffee day website",
         image: projectCoffeeDay,
         link: "https://coffee-day-eta.vercel.app",
+      },
+      {
+        name: "Srinivas Interiors",
+        image: projectSrinivasInteriors,
+        link: "https://srinivas-interiors-3a2mrdc.gamma.site",
       },
       {
         name: "Aurora Brew (Cafe Website)",
