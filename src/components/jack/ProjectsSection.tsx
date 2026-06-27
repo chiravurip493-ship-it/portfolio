@@ -127,11 +127,6 @@ const PROJECTS: Project[] = [
         image: projectWebDevPortfolio,
         link: "https://web-dev-portfolio-alpha-sooty.vercel.app",
       },
-      {
-        name: "Minimalist Designer Showcase",
-        image: projectPortfolio,
-        link: "https://github.com/balapranav3010",
-      },
     ],
   },
   {
