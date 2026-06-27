@@ -70,6 +70,7 @@ const PROJECTS: Project[] = [
     category: "Interactive Web",
     name: "3D Animated Websites",
     image: projectRobotExhibition,
+    mainImageClass: "object-contain p-4 md:p-6 bg-black",
     subProjects: [
       {
         name: "Lamborghini-Huracan Website",
