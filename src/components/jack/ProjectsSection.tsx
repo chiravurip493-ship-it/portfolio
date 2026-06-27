@@ -141,11 +141,6 @@ const PROJECTS: Project[] = [
         image: projectSrinivasInteriors,
         link: "https://srinivas-interiors-3a2mrdc.gamma.site",
       },
-      {
-        name: "Aurora Brew (Cafe Website)",
-        image: projectBasicCafe,
-        link: "https://github.com/balapranav3010",
-      },
     ],
   },
 ];
