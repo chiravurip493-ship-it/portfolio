@@ -63,11 +63,6 @@ const PROJECTS: Project[] = [
         image: projectGym,
         link: "https://v0-premium-gym-website-eight.vercel.app",
       },
-      {
-        name: "PeachWeb Creative Marketing",
-        image: projectCreativeMarketing,
-        link: "https://creative-marketing-peach.vercel.app",
-      },
     ],
   },
   {
