@@ -38,8 +38,7 @@ function Row({ images }: { images: string[] }) {
           src={src}
           alt=""
           loading="lazy"
-          className="rounded-2xl object-cover shrink-0"
-          style={{ width: 420, height: 270 }}
+          className="rounded-2xl object-cover shrink-0 w-[240px] h-[155px] md:w-[420px] md:h-[270px]"
         />
       ))}
     </div>
