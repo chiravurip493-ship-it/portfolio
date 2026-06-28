@@ -119,12 +119,13 @@ export function HeroSection() {
           left-1/2
           -translate-x-1/2
           z-10
-          top-1/2
+          top-[44%]
           -translate-y-1/2
           sm:top-auto
           sm:translate-y-0
           sm:bottom-0
-          w-[280px]
+          w-[220px]
+          min-[375px]:w-[260px]
           sm:w-[360px]
           md:w-[440px]
           lg:w-[520px]
