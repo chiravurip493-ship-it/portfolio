@@ -92,12 +92,13 @@ export function HeroSection() {
               uppercase
               tracking-wide
               leading-snug
-              max-w-[160px]
+              max-w-[120px]
+              min-[375px]:max-w-[160px]
               sm:max-w-[220px]
               md:max-w-[260px]
             "
             style={{
-              fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)",
+              fontSize: "clamp(0.6rem, 1.4vw, 1.5rem)",
             }}
           >
             computer science student & software developer
@@ -119,13 +120,14 @@ export function HeroSection() {
           left-1/2
           -translate-x-1/2
           z-10
-          top-[44%]
+          top-[42%]
           -translate-y-1/2
           sm:top-auto
           sm:translate-y-0
           sm:bottom-0
-          w-[220px]
-          min-[375px]:w-[260px]
+          w-[170px]
+          min-[375px]:w-[220px]
+          min-[410px]:w-[260px]
           sm:w-[360px]
           md:w-[440px]
           lg:w-[520px]

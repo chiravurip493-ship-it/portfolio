@@ -9,8 +9,8 @@ export function ContactButton({
       className="
         inline-flex items-center justify-center
         rounded-full
-        px-8 py-3 sm:px-10 sm:py-4 md:px-12 md:py-4
-        text-xs sm:text-sm md:text-base
+        px-5 py-2.5 min-[375px]:px-8 min-[375px]:py-3 sm:px-10 sm:py-4 md:px-12 md:py-4
+        text-[10px] min-[375px]:text-xs sm:text-sm md:text-base
         font-semibold uppercase tracking-[0.25em]
         text-white
         transition-all duration-300

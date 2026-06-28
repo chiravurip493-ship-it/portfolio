@@ -114,8 +114,8 @@ function SkillRow({
           <div
             key={index}
             className="
-              flex items-center gap-4
-              px-7 py-4
+              flex items-center gap-2 sm:gap-4
+              px-4 py-2 sm:px-7 sm:py-4
               rounded-full
               border border-white/10
               bg-white/[0.03]
@@ -125,9 +125,9 @@ function SkillRow({
               shrink-0
             "
           >
-            <Icon size={36} color={skill.color} />
+            <Icon className="w-5 h-5 sm:w-9 sm:h-9" color={skill.color} />
 
-            <span className="text-white font-medium text-lg">
+            <span className="text-white font-medium text-sm sm:text-lg">
               {skill.name}
             </span>
           </div>
