@@ -313,7 +313,7 @@ export function ProjectsSection() {
         {PROJECTS.map((project, index) => (
           <div
             key={project.n}
-            className="h-[85vh]"
+            className="h-[45vh] sm:h-[60vh] md:h-[75vh] lg:h-[85vh]"
           >
             <ProjectCard
               project={project}
