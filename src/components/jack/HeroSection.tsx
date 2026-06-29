@@ -144,6 +144,7 @@ export function HeroSection() {
             alt="Pranav portrait"
             className="w-full h-auto select-none pointer-events-none"
             draggable={false}
+            fetchPriority="high"
           />
         </Magnet>
       </FadeIn>
