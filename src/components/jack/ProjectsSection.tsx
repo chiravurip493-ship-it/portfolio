@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 import { LiveProjectButton } from "./LiveProjectButton";
+import { useAuthBilling } from "@/lib/auth-billing";
+import { PricingModal } from "./PricingModal";
+import { AuthModal } from "./AuthModal";
 
 import projectNike from "@/assets/project-nike.jpg";
 import projectPortfolio from "@/assets/project-portfolio.png";
@@ -37,6 +40,7 @@ interface Project {
   imageLeftBottom?: string;
   mainImageClass?: string;
   subProjects: SubProject[];
+  isPremium?: boolean;
 }
 
 const PROJECTS: Project[] = [
@@ -64,6 +68,7 @@ const PROJECTS: Project[] = [
     name: "3D Animated Websites",
     image: projectRobotExhibition,
     mainImageClass: "object-contain p-4 md:p-6 bg-black",
+    isPremium: true,
     subProjects: [
       {
         name: "Lamborghini-Huracan Website",
@@ -87,6 +92,7 @@ const PROJECTS: Project[] = [
     category: "E-Commerce",
     name: "E-Commerce Stores",
     image: projectNike,
+    isPremium: true,
     subProjects: [
       {
         name: "Elevate — Game Style",
@@ -152,6 +158,7 @@ function ProjectCard({
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
   onOpenCollection: () => void;
 }) {
+  const { tier } = useAuthBilling();
   const targetScale = 1 - (total - 1 - index) * 0.03;
 
   const scale = useTransform(
@@ -192,9 +199,16 @@ function ProjectCard({
             </div>
 
             <div className="flex flex-col gap-1">
-              <span className="text-white/50 uppercase tracking-[0.25em] text-xs sm:text-sm">
-                {project.category}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-white/50 uppercase tracking-[0.25em] text-xs sm:text-sm">
+                  {project.category}
+                </span>
+                {project.isPremium && (
+                  <span className="px-2 py-0.5 rounded-[5px] text-[8px] sm:text-[9px] uppercase tracking-wider font-extrabold text-amber-400 bg-amber-400/10 border border-amber-400/10">
+                    PRO
+                  </span>
+                )}
+              </div>
 
               <span
                 className="text-white font-medium uppercase"
@@ -207,62 +221,107 @@ function ProjectCard({
             </div>
           </div>
 
-          <LiveProjectButton onClick={onOpenCollection} label="View Collection" />
+          <LiveProjectButton 
+            onClick={onOpenCollection} 
+            label={project.isPremium && tier !== "pro" ? "Unlock Pro" : "View Collection"} 
+          />
         </div>
 
-        {/* Images */}
-        <div className="grid grid-cols-5 gap-2 sm:gap-4">
-          {/* Left */}
-          <div className="col-span-2 flex flex-col gap-2 sm:gap-4">
-            <img
-              src={project.imageLeftTop || project.image}
-              alt={project.name}
-              loading="lazy"
-              className="
-                w-full object-cover
-                rounded-[12px] sm:rounded-[30px]
-                border border-white/10
-                hover:scale-[1.02]
-                transition-all duration-300
-              "
-              style={{
-                height: "clamp(60px,18vw,240px)",
-              }}
-            />
+        {/* Images Wrapper */}
+        <div className="relative">
+          {project.isPremium && tier !== "pro" && (
+            <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-md flex flex-col items-center justify-center text-center p-6 border border-white/5 rounded-[15px] sm:rounded-[35px] md:rounded-[45px]">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-3 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-4 h-4 text-white/80"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <h4 className="text-white font-bold uppercase tracking-wider text-xs sm:text-sm mb-1">
+                PRO Category Gated
+              </h4>
+              <p className="text-white/50 text-[10px] sm:text-xs max-w-[200px] leading-relaxed mb-4">
+                Unlock this collection and download all website templates.
+              </p>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpenCollection();
+                }}
+                className="
+                  px-5 py-2 rounded-full
+                  bg-white text-black text-xs font-bold uppercase tracking-wider
+                  hover:bg-[#EAEAEA] active:scale-[0.98] transition-all duration-200
+                  cursor-pointer
+                "
+              >
+                Unlock Now
+              </button>
+            </div>
+          )}
 
-            <img
-              src={project.imageLeftBottom || project.image}
-              alt={project.name}
-              loading="lazy"
-              className="
-                w-full object-cover
-                rounded-[12px] sm:rounded-[30px]
-                border border-white/10
-                hover:scale-[1.02]
-                transition-all duration-300
-              "
-              style={{
-                height: "clamp(80px,24vw,320px)",
-              }}
-            />
-          </div>
+          {/* Images */}
+          <div className="grid grid-cols-5 gap-2 sm:gap-4">
+            {/* Left */}
+            <div className="col-span-2 flex flex-col gap-2 sm:gap-4">
+              <img
+                src={project.imageLeftTop || project.image}
+                alt={project.name}
+                loading="lazy"
+                className="
+                  w-full object-cover
+                  rounded-[12px] sm:rounded-[30px]
+                  border border-white/10
+                  hover:scale-[1.02]
+                  transition-all duration-300
+                "
+                style={{
+                  height: "clamp(60px,18vw,240px)",
+                }}
+              />
 
-          {/* Main Image */}
-          <div className="col-span-3 flex items-center justify-center overflow-hidden rounded-[15px] sm:rounded-[35px] md:rounded-[45px] border border-white/10">
-            <img
-              src={project.image}
-              alt={project.name}
-              loading="lazy"
-              className={`
-                w-full h-full
-                hover:scale-[1.01]
-                transition-all duration-300
-                ${project.mainImageClass || "object-cover"}
-              `}
-              style={{
-                minHeight: "100%",
-              }}
-            />
+              <img
+                src={project.imageLeftBottom || project.image}
+                alt={project.name}
+                loading="lazy"
+                className="
+                  w-full object-cover
+                  rounded-[12px] sm:rounded-[30px]
+                  border border-white/10
+                  hover:scale-[1.02]
+                  transition-all duration-300
+                "
+                style={{
+                  height: "clamp(80px,24vw,320px)",
+                }}
+              />
+            </div>
+
+            {/* Main Image */}
+            <div className="col-span-3 flex items-center justify-center overflow-hidden rounded-[15px] sm:rounded-[35px] md:rounded-[45px] border border-white/10">
+              <img
+                src={project.image}
+                alt={project.name}
+                loading="lazy"
+                className={`
+                  w-full h-full
+                  hover:scale-[1.01]
+                  transition-all duration-300
+                  ${project.mainImageClass || "object-cover"}
+                `}
+                style={{
+                  minHeight: "100%",
+                }}
+              />
+            </div>
           </div>
         </div>
       </motion.div>
@@ -273,11 +332,22 @@ function ProjectCard({
 export function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState<Project | null>(null);
+  const [isPricingOpen, setIsPricingOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const { tier } = useAuthBilling();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
+  const handleOpenCollection = (project: Project) => {
+    if (project.isPremium && tier !== "pro") {
+      setIsPricingOpen(true);
+    } else {
+      setActiveCategory(project);
+    }
+  };
 
   return (
     <section id="projects"
@@ -320,7 +390,7 @@ export function ProjectsSection() {
               index={index}
               total={PROJECTS.length}
               progress={scrollYProgress}
-              onOpenCollection={() => setActiveCategory(project)}
+              onOpenCollection={() => handleOpenCollection(project)}
             />
           </div>
         ))}
@@ -434,6 +504,17 @@ export function ProjectsSection() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Render paywall modals inline */}
+      <PricingModal
+        isOpen={isPricingOpen}
+        onClose={() => setIsPricingOpen(false)}
+        onOpenAuth={() => {
+          setIsPricingOpen(false);
+          setIsAuthOpen(true);
+        }}
+      />
+      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </section>
   );
 }

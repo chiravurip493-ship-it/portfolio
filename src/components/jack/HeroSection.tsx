@@ -1,6 +1,7 @@
 import { FadeIn } from "./FadeIn";
 import { Magnet } from "./Magnet";
 import { ContactButton } from "./ContactButton";
+import { NavbarActions } from "./NavbarActions";
 import aminePortrait from "@/assets/tp-tech.png";
 
 const NAV_LINKS = [
@@ -22,27 +23,31 @@ export function HeroSection() {
         as="nav"
         delay={0}
         y={-20}
-        className="flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8 relative z-20"
+        className="flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8 relative z-20 w-full"
       >
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link}
-            href={`#${link.toLowerCase()}`}
-            className="
-              text-[#D7E2EA]
-              font-medium
-              uppercase
-              tracking-wider
-              text-sm
-              md:text-lg
-              lg:text-[1.4rem]
-              hover:opacity-70
-              transition-opacity duration-200
-            "
-          >
-            {link}
-          </a>
-        ))}
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-8 flex-wrap">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="
+                text-[#D7E2EA]
+                font-medium
+                uppercase
+                tracking-wider
+                text-xs
+                sm:text-sm
+                md:text-base
+                lg:text-lg
+                hover:opacity-70
+                transition-opacity duration-200
+              "
+            >
+              {link}
+            </a>
+          ))}
+        </div>
+        <NavbarActions />
       </FadeIn>
 
       {/* Title */}
