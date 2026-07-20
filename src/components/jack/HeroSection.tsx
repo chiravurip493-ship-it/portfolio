@@ -68,7 +68,7 @@ export function HeroSection() {
               lg:text-[14.2vw]
             "
           >
-            HI, I'M PAVAN
+            HI, I&apos;M PAVAN
           </h1>
         </FadeIn>
       </div>
