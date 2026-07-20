@@ -204,7 +204,7 @@ export function PricingModal({ isOpen, onClose, onOpenAuth }: PricingModalProps)
 
                   <p className="text-xs text-white/40 mb-6 leading-relaxed">
                     {billingCycle === "monthly"
-                      * "Cancel anytime. Safe Stripe processing."
+                      ? "Cancel anytime. Safe Stripe processing."
                       : "Lifetime access. All updates included."}
                   </p>
 
