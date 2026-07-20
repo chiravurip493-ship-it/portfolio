@@ -1,9 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 import { LiveProjectButton } from "./LiveProjectButton";
-import { useAuthBilling } from "@/lib/auth-billing";
-import { AuthModal } from "./AuthModal";
 
 import projectNike from "@/assets/project-nike.jpg";
 import projectPortfolio from "@/assets/project-portfolio.png";
@@ -286,7 +284,6 @@ function ProjectCard({
 export function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState<Project | null>(null);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -452,9 +449,6 @@ export function ProjectsSection() {
           </div>
         )}
       </AnimatePresence>
-
-      {/* Render paywall modals inline */}
-      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </section>
   );
 }
